@@ -38,7 +38,57 @@ class RecipesController < ApplicationController
   end
 
   def homeSnapshot
-    @recipes = Recipe.order(:created_at).first(6)
+    @recipes = Recipe.order(:created_at).first(8)
+    render json: @recipes
+  end
+
+  def entreeSnapshot
+    @recipes = Recipe.order(:created_at).where('recipeType': 'Entree').first(8)
+    render json: @recipes
+  end
+
+  def breakfastSnapshot
+    @recipes = Recipe.order(:created_at).where('recipeType': 'Breakfast').first(8)
+    render json: @recipes
+  end
+
+  def dessertSnapshot
+    @recipes = Recipe.order(:created_at).where('recipeType': 'Dessert').first(8)
+    render json: @recipes
+  end
+
+  def sideSnapshot
+    @recipes = Recipe.order(:created_at).where('recipeType': 'Side').first(8)
+    render json: @recipes
+  end
+
+  def drinkSnapshot
+    @recipes = Recipe.order(:created_at).where('recipeType': 'Drink').first(8)
+    render json: @recipes
+  end
+
+  def entree
+    @recipes = Recipe.order(:created_at).where('recipeType': 'Entree')
+    render json: @recipes
+  end
+
+  def breakfast
+    @recipes = Recipe.order(:created_at).where('recipeType': 'Breakfast')
+    render json: @recipes
+  end
+
+  def dessert
+    @recipes = Recipe.order(:created_at).where('recipeType': 'Dessert')
+    render json: @recipes
+  end
+
+  def side
+    @recipes = Recipe.order(:created_at).where('recipeType': 'Side')
+    render json: @recipes
+  end
+
+  def drink
+    @recipes = Recipe.order(:created_at).where('recipeType': 'Drink')
     render json: @recipes
   end
 
