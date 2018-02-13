@@ -4,7 +4,6 @@ class RecipesController < ApplicationController
   # GET /recipes
   def index
     @recipes = Recipe.all
-
     render json: @recipes
   end
 
@@ -37,6 +36,12 @@ class RecipesController < ApplicationController
   def destroy
     @recipe.destroy
   end
+
+  def homeSnapshot
+    @recipes = Recipe.order(:created_at).first(6)
+    render json: @recipes
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
