@@ -38,32 +38,32 @@ class RecipesController < ApplicationController
   end
 
   def homeSnapshot
-    @recipes = Recipe.order(:created_at).first(8)
+    @recipes = Recipe.order(:created_at).last(6)
     render json: @recipes
   end
 
   def entreeSnapshot
-    @recipes = Recipe.order(:created_at).where('recipeType': 'Entree').first(8)
+    @recipes = Recipe.order(:created_at).where('recipeType': 'Entree').last(8)
     render json: @recipes
   end
 
   def breakfastSnapshot
-    @recipes = Recipe.order(:created_at).where('recipeType': 'Breakfast').first(8)
+    @recipes = Recipe.order(:created_at).where('recipeType': 'Breakfast').last(8)
     render json: @recipes
   end
 
   def dessertSnapshot
-    @recipes = Recipe.order(:created_at).where('recipeType': 'Dessert').first(8)
+    @recipes = Recipe.order(:created_at).where('recipeType': 'Dessert').last(8)
     render json: @recipes
   end
 
   def sideSnapshot
-    @recipes = Recipe.order(:created_at).where('recipeType': 'Side').first(8)
+    @recipes = Recipe.order(:created_at).where('recipeType': 'Side').last(8)
     render json: @recipes
   end
 
   def drinkSnapshot
-    @recipes = Recipe.order(:created_at).where('recipeType': 'Drink').first(8)
+    @recipes = Recipe.order(:created_at).where('recipeType': 'Drink').last(8)
     render json: @recipes
   end
 
@@ -101,6 +101,6 @@ class RecipesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def recipe_params
-      params.require(:recipe).permit(:title, :image1, :image2, :image3, :desc1, :desc2, :desc3, :prep, :cook, :serves)
+      params.require(:recipe).permit(:title, :image1, :image2, :image3, :desc1, :desc2, :desc3, :prep, :cook, :serves, :recipeType)
     end
 end
