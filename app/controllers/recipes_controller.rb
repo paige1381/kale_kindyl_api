@@ -4,7 +4,7 @@ class RecipesController < ApplicationController
   # GET /recipes
   def index
     @recipes = Recipe.all
-    render json: @recipes
+    render json: @recipes.to_json(include: :tag)
   end
 
   # GET /recipes/1

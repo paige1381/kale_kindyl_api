@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
+  root 'welcome#index'
+  resources :tags, only: [:index, :show, :update, :destroy]
   resources :recipes do
+    resources :tags, only: [:create]
     collection do
       get 'homeSnapshot', to: 'recipes#homeSnapshot'
       get 'entreeSnapshot', to: 'recipes#entreeSnapshot'
