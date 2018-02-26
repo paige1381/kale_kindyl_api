@@ -5,12 +5,12 @@ class DirectionsCategoriesController < ApplicationController
   def index
     @directions_categories = DirectionsCategory.all
 
-    render json: @directions_categories
+    render json: @directions_categories.to_json(include: :directions)
   end
 
   # GET /directions_categories/1
   def show
-    render json: @directions_category
+    render json: @directions_category.to_json(include: :directions)
   end
 
   # POST /directions_categories

@@ -4,7 +4,10 @@ Rails.application.routes.draw do
   resources :ingredient_categories, only: [:index, :show, :update, :destroy] do
     resources :ingredients, only: [:create]
   end
-  resources :directions_categories, only: [:index, :show, :update, :destroy]
+  resources :directions, only: [:index, :show, :update, :destroy]
+  resources :directions_categories, only: [:index, :show, :update, :destroy] do
+    resources :directions, only: [:create]
+  end
   resources :tags, only: [:index, :show, :update, :destroy]
   resources :recipes do
     resources :tags, only: [:create]
