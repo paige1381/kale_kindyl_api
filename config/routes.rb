@@ -8,9 +8,9 @@ Rails.application.routes.draw do
   resources :directions_categories, only: [:index, :show, :update, :destroy] do
     resources :directions, only: [:create]
   end
-  resources :tags, only: [:index, :show, :update, :destroy]
+  resources :tags, only: [:show, :update, :destroy]
   resources :recipes do
-    resources :tags, only: [:create]
+    resources :tags, only: [:index, :create]
     resources :ingredient_categories, only: [:create]
     resources :directions_categories, only: [:create]
     collection do
