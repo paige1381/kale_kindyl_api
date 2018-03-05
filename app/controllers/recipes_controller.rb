@@ -4,7 +4,7 @@ class RecipesController < ApplicationController
   # GET /recipes
   def index
     @recipes = Recipe.all
-    render json: @recipes
+    render json: @recipes.to_json(include: :tags)
   end
 
   # GET /recipes/1
@@ -38,58 +38,58 @@ class RecipesController < ApplicationController
   end
 
   def homeSnapshot
-    @recipes = Recipe.order(:created_at).last(6)
-    render json: @recipes
+    @recipes = Recipe.order(:created_at).last(8)
+    render json: @recipes.to_json(include: :tags)
   end
 
   def entreeSnapshot
     @recipes = Recipe.order(:created_at).where('recipeType': 'Entree').last(8)
-    render json: @recipes
+    render json: @recipes.to_json(include: :tags)
   end
 
   def breakfastSnapshot
     @recipes = Recipe.order(:created_at).where('recipeType': 'Breakfast').last(8)
-    render json: @recipes
+    render json: @recipes.to_json(include: :tags)
   end
 
   def dessertSnapshot
     @recipes = Recipe.order(:created_at).where('recipeType': 'Dessert').last(8)
-    render json: @recipes
+    render json: @recipes.to_json(include: :tags)
   end
 
   def sideSnapshot
     @recipes = Recipe.order(:created_at).where('recipeType': 'Side').last(8)
-    render json: @recipes
+    render json: @recipes.to_json(include: :tags)
   end
 
   def drinkSnapshot
     @recipes = Recipe.order(:created_at).where('recipeType': 'Drink').last(8)
-    render json: @recipes
+    render json: @recipes.to_json(include: :tags)
   end
 
   def entree
     @recipes = Recipe.order(:created_at).where('recipeType': 'Entree')
-    render json: @recipes
+    render json: @recipes.to_json(include: :tags)
   end
 
   def breakfast
     @recipes = Recipe.order(:created_at).where('recipeType': 'Breakfast')
-    render json: @recipes
+    render json: @recipes.to_json(include: :tags)
   end
 
   def dessert
     @recipes = Recipe.order(:created_at).where('recipeType': 'Dessert')
-    render json: @recipes
+    render json: @recipes.to_json(include: :tags)
   end
 
   def side
     @recipes = Recipe.order(:created_at).where('recipeType': 'Side')
-    render json: @recipes
+    render json: @recipes.to_json(include: :tags)
   end
 
   def drink
     @recipes = Recipe.order(:created_at).where('recipeType': 'Drink')
-    render json: @recipes
+    render json: @recipes.to_json(include: :tags)
   end
 
 
