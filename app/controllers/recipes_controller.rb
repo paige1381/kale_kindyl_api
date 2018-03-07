@@ -9,7 +9,7 @@ class RecipesController < ApplicationController
 
   # GET /recipes/1
   def show
-    render json: @recipe.to_json(include: :tags)
+    render json: @recipe.to_json(include: [:tags, :ingredient_categories])
   end
 
   # POST /recipes
