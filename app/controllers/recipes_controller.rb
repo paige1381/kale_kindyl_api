@@ -9,7 +9,7 @@ class RecipesController < ApplicationController
 
   # GET /recipes/1
   def show
-    render json: @recipe.to_json(include: {tags: {only: :symbol}})
+    render json: @recipe.to_json(include: [{ingredient_categories: {only: :id}}, {tags: {only: :symbol}}])
   end
 
   # POST /recipes

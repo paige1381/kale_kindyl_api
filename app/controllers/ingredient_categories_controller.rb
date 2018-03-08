@@ -5,12 +5,12 @@ class IngredientCategoriesController < ApplicationController
   def index
     @ingredient_categories = IngredientCategory.all
 
-    render json: @ingredient_categories.to_json(include: :ingredients)
+    render json: @ingredient_categories
   end
 
   # GET /ingredient_categories/1
   def show
-    render json: @ingredient_category
+    render json: @ingredient_category.to_json(include: {ingredients: {only: :title}})
   end
 
   # POST /ingredient_categories
