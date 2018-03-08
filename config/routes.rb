@@ -2,17 +2,17 @@ Rails.application.routes.draw do
   resources :recipe_tags
   root 'welcome#index'
   resources :ingredients, only: [:index, :show, :update, :destroy]
-  resources :ingredient_categories, only: [:index, :show, :update, :destroy] do
+  resources :ingredient_categories, only: [:show, :update, :destroy] do
     resources :ingredients, only: [:create]
   end
   resources :directions, only: [:index, :show, :update, :destroy]
-  resources :directions_categories, only: [:index, :show, :update, :destroy] do
+  resources :directions_categories, only: [:show, :update, :destroy] do
     resources :directions, only: [:create]
   end
   resources :tags
   resources :recipes do
-    resources :ingredient_categories, only: [:create]
-    resources :directions_categories, only: [:create]
+    resources :ingredient_categories, only: [:index, :create]
+    resources :directions_categories, only: [:index, :create]
     collection do
       get 'homeSnapshot', to: 'recipes#homeSnapshot'
       get 'entreeSnapshot', to: 'recipes#entreeSnapshot'
